@@ -1,0 +1,157 @@
+---
+title: "arranging and grouping"
+author: "ramakrishna"
+date: "30 January 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+arranging data monthwise
+```{r}
+# arrange all the data to be grouped in one folder(predictiveanalytics/modified/manipulated/all)
+# reading and loading all files
+load_data <- function(path){
+  files <- dir("F:/education/predictiveanalytics/modified/manipulated/all", pattern = '\\.csv', full.names = TRUE)
+  tables <- lapply(files, read.csv)
+  do.call(rbind, tables)
+}
+m1 <- load_data("all")
+# conerting class to posixct
+m1$Timestamp.Transaction <- as.POSIXct(m1$Timestamp.Transaction, tz = "UTC")
+m1$Timestamp.Delivery <- as.POSIXct(m1$Timestamp.Delivery, tz = "UTC")
+# removing unwanted rows
+m1$D.O.Delivery <- NULL
+m1$T.o.Delivery <- NULL
+# arranging data month wise you can find other years files in respective year folders in programs files
+#2014-01
+c1.1 <- as.POSIXct("2013-12-31 15:30:00", tz = "UTC")
+c2.1 <- as.POSIXct("2014-01-31 23:59:45", tz = "UTC")
+m2 <- subset(m1,(m1$Timestamp.Transaction >= c1.1 & m1$Timestamp.Transaction <= c2.1 ))
+write.csv(m2,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.01.csv")
+#2014-02
+c1 <- as.POSIXct("2014-02-01 00:00:00", tz = "UTC")
+c2 <- as.POSIXct("2014-02-28 23:59:45", tz = "UTC")
+m3 <- subset(m1,(m1$Timestamp.Transaction >= c1 & m1$Timestamp.Transaction <= c2 ))
+write.csv(m3,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.02.csv")
+# 2014-03
+c3 <- as.POSIXct("2014-03-01 00:00:00", tz = "UTC")
+c4 <- as.POSIXct("2014-03-31 23:59:45", tz = "UTC")
+m4 <- subset(m1,(m1$Timestamp.Transaction >= c3 & m1$Timestamp.Transaction <= c4 ))
+write.csv(m4,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.03.csv")
+#2014-04
+c5 <- as.POSIXct("2014-04-01 00:00:00", tz = "UTC")
+c6 <- as.POSIXct("2014-04-30 23:59:45", tz = "UTC")
+m2 <- subset(m1,(m1$Timestamp.Transaction >= c5 & m1$Timestamp.Transaction <= c6 ))
+write.csv(m2,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.04.csv")
+#2014-05
+c7 <- as.POSIXct("2014-05-01 00:00:00", tz = "UTC")
+c8 <- as.POSIXct("2014-05-31 23:59:45", tz = "UTC")
+m2 <- subset(m1,(m1$Timestamp.Transaction >= c7 & m1$Timestamp.Transaction <= c8 ))
+write.csv(m2,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.05.csv")
+#2014-06
+c9 <- as.POSIXct("2014-06-01 00:00:00", tz = "UTC")
+c10 <- as.POSIXct("2014-06-30 23:59:45", tz = "UTC")
+m2 <- subset(m1,(m1$Timestamp.Transaction >= c9 & m1$Timestamp.Transaction <= c10 ))
+write.csv(m2,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.06.csv")
+# 2014-07
+c3 <- as.POSIXct("2014-07-01 00:00:00", tz = "UTC")
+c4 <- as.POSIXct("2014-07-31 23:59:45", tz = "UTC")
+m4 <- subset(m1,(m1$Timestamp.Transaction >= c3 & m1$Timestamp.Transaction <= c4 ))
+write.csv(m4,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.07.csv")
+# 2014-08
+c3 <- as.POSIXct("2014-08-01 00:00:00", tz = "UTC")
+c4 <- as.POSIXct("2014-08-31 23:59:45", tz = "UTC")
+m4 <- subset(m1,(m1$Timestamp.Transaction >= c3 & m1$Timestamp.Transaction <= c4 ))
+write.csv(m4,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.08.csv")
+# 2014-09
+c3 <- as.POSIXct("2014-09-01 00:00:00", tz = "UTC")
+c4 <- as.POSIXct("2014-09-30 23:59:45", tz = "UTC")
+m4 <- subset(m1,(m1$Timestamp.Transaction >= c3 & m1$Timestamp.Transaction <= c4 ))
+write.csv(m4,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.09.csv")
+# 2014-10
+c3 <- as.POSIXct("2014-10-01 00:00:00", tz = "UTC")
+c4 <- as.POSIXct("2014-10-31 23:59:45", tz = "UTC")
+m4 <- subset(m1,(m1$Timestamp.Transaction >= c3 & m1$Timestamp.Transaction <= c4 ))
+write.csv(m4,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.10.csv")
+# 2014-11
+c3 <- as.POSIXct("2014-11-01 00:00:00", tz = "UTC")
+c4 <- as.POSIXct("2014-11-30 23:59:45", tz = "UTC")
+m4 <- subset(m1,(m1$Timestamp.Transaction >= c3 & m1$Timestamp.Transaction <= c4 ))
+write.csv(m4,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.11.csv")
+# 2014-12
+c3 <- as.POSIXct("2014-12-01 00:00:00", tz = "UTC")
+c4 <- as.POSIXct("2014-12-31 23:59:45", tz = "UTC")
+m4 <- subset(m1,(m1$Timestamp.Transaction >= c3 & m1$Timestamp.Transaction <= c4 ))
+write.csv(m4,"F:/education/predictiveanalytics/modified/manipulated/yearwise/2014.12.csv")
+```
+#Arranging for input and output of ANN
+```{r}
+# reading file
+library(readr)
+m1 <- read_csv("F:/education/predictiveanalytics/modified/grouped/2015/2015.12.csv", 
+               col_types = cols(Energy = col_double(), Power = col_double(), 
+                                Price = col_double(),  
+                                Timestamp.Delivery = col_character(), 
+                                Timestamp.Transaction = col_character(), 
+                                Total.time.Delivery = col_double()), 
+               na = "NA")
+ # converting time to posixct             
+ library(lubridate)
+ m1$Timestamp.Transaction <- as.POSIXct(m1$Timestamp.Transaction, tz = "UTC")
+ m1$Timestamp.Delivery <- as.POSIXct(m1$Timestamp.Delivery, tz = "UTC")
+# deleting unwanted rows
+  m1$D.O.Delivery <- NULL
+ m1$T.o.Delivery <- NULL
+ m1$X1 <- NULL
+ # filtering timestamp by taking unique timestamps
+ t1 <- unique(m1$Timestamp.Transaction)
+ # subsetting timestamp within limits it changes fro month to month 
+ c1 <- as.POSIXct("2016-12-02 08:00:00", tz = "UTC")
+ c2 <- as.POSIXct("2016-12-31 23:45:00", tz = "UTC")
+ t2 <- subset(t1,t1 >= c1 & t1 <= c2 )
+ # applying loops for grouping based on condition
+m2 <- lapply(t2, function(x)
+  subset(m1, (m1$Timestamp.Transaction <=x & m1$Timestamp.Transaction >= x-115200)&(m1$Timestamp.Delivery == x+14400)))
+m3 <- lapply(t2, function(x)
+  subset(m1$Price, (m1$Timestamp.Transaction <=x & m1$Timestamp.Transaction >= x-115200)&(m1$Timestamp.Delivery == x+14400)))
+m4 <- lapply(t2, function(x)
+  subset(m1$Energy, (m1$Timestamp.Transaction <=x & m1$Timestamp.Transaction >= x-115200)&(m1$Timestamp.Delivery == x+14400)))
+# finding min,max,mean of the price and weekday,dayof the year of timestamp, total energy
+Timestamp <- t2
+min.price <- unlist(lapply(m3,min))
+max.price <- unlist(lapply(m3,max))
+avg.price <- unlist(lapply(m3,mean))
+weekday <- unlist(lapply(t2,wday)) 
+dayofyear <-unlist(lapply(t2,yday))
+total.energy <- unlist(lapply(m4,sum))
+firstquartil <- unlist(lapply(m3,quantile,probs = 1/4))
+thirdquartil <- unlist(lapply(m3,quantile,probs = 3/4))
+nooftransactions <- unlist(lapply(m3,length))
+# forming a dataframe with all the vectors above
+input.n <- data.frame(Timestamp,min.price,max.price,avg.price,weekday,dayofyear,total.energy,firstquartil,thirdquartil,nooftransactions)
+#writing data to csv file
+write.csv(input.n, "F:/education/predictiveanalytics/modified/inputofNN/in2016_12ANN.csv")
+# checking for NA's
+m5 <- subset(input.n, input.n$nooftransactions == 0)
+
+
+
+```
+# removing unwanted elemnts row wise
+```{r}
+load_data <- function(path){
+  files <- dir("F:/education/predictiveanalytics/modified/inputofNN", pattern = '\\.csv', full.names = TRUE)
+  tables <- lapply(files, read.csv)
+  do.call(rbind, tables)
+}
+m1 <- load_data("all")
+m1$X <- NULL
+m1$Timestamp <- as.POSIXct(m1$Timestamp,tz="UTC")
+# removing rows with NA's
+m1 <- m1[complete.cases(m1),]
+write.csv(m1,"F:/education/predictiveanalytics/ANN.data/inputofANN.csv")
+```
+
+
