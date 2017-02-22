@@ -1,2 +1,2 @@
 # masterproject
-Stock prise prediction using Neuralnetworks and timeseries analysis
+Stock prise prediction using Neuralnetworks and timeseries analysis.
